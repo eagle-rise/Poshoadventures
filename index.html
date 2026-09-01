@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1c2410" />
+  <meta name="description" content="Posho Adventures — Kenya safari, wildlife, culture, beach and adventure travel. Explore Kenya with a journey designed around you." />
+  <title>Posho Adventures | Explore. Discover. Experience.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root{
+      --ink:#17200e;
+      --forest:#283516;
+      --forest-2:#384a1e;
+      --gold:#d79a31;
+      --amber:#b86516;
+      --cream:#fbf7ef;
+      --sand:#ead9b7;
+      --muted:#69705f;
+      --white:#fff;
+      --shadow:0 20px 60px rgba(22,30,13,.12);
+      --radius:24px;
+      --max:1200px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:"DM Sans",sans-serif;color:var(--ink);background:#fff;line-height:1.65}
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    button,input,textarea,select{font:inherit}
+    .container{width:min(var(--max),92%);margin:auto}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;text-transform:uppercase;letter-spacing:.18em;font-size:.76rem;font-weight:800;color:var(--amber)}
+    .eyebrow:before{content:"";width:30px;height:2px;background:var(--gold)}
+    h1,h2,h3,h4{font-family:"Playfair Display",serif;line-height:1.08}
+    h2{font-size:clamp(2.2rem,4vw,4rem)}
+    p.lead{font-size:1.08rem;color:var(--muted);max-width:720px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;border-radius:999px;font-weight:800;transition:.25s;border:1px solid transparent;cursor:pointer}
+    .btn-primary{background:var(--gold);color:#171b0e}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(215,154,49,.3)}
+    .btn-dark{background:var(--forest);color:#fff}
+    .btn-light{background:#fff;color:var(--forest)}
+    .btn-outline{border-color:rgba(255,255,255,.35);color:#fff;background:rgba(255,255,255,.08)}
+    .btn-outline:hover{background:#fff;color:var(--forest)}
+    .topbar{background:var(--ink);color:#fff;font-size:.84rem}
+    .topbar .container{display:flex;justify-content:space-between;align-items:center;padding:8px 0;gap:20px}
+    .toplinks{display:flex;gap:18px;flex-wrap:wrap}
+    header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid #eee}
+    nav{height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand img{width:150px;height:auto}
+    .navlinks{display:flex;gap:26px;align-items:center;font-weight:700;font-size:.92rem}
+    .navlinks a{position:relative}
+    .navlinks a:after{content:"";position:absolute;left:0;right:100%;bottom:-8px;height:2px;background:var(--gold);transition:.25s}
+    .navlinks a:hover:after{right:0}
+    .mobile-toggle{display:none;border:0;background:transparent;font-size:1.4rem}
+    .hero{min-height:calc(100vh - 114px);display:grid;align-items:end;position:relative;color:#fff;overflow:hidden;background:
+      linear-gradient(90deg,rgba(9,14,6,.78),rgba(9,14,6,.25) 55%,rgba(9,14,6,.2)),
+      url("https://images.unsplash.com/photo-1704868152748-e5a520db48e5?auto=format&fit=crop&q=85&w=2200") center/cover}
+    .hero:after{content:"";position:absolute;inset:auto 0 0;height:30%;background:linear-gradient(transparent,rgba(9,14,6,.72))}
+    .hero-content{position:relative;z-index:2;padding:110px 0 90px;max-width:760px}
+    .hero h1{font-size:clamp(3.4rem,7vw,6.8rem);margin:18px 0}
+    .hero h1 span{color:#f0bd57}
+    .hero p{font-size:1.18rem;max-width:670px;color:#f4f1e8}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .hero-badges{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+    .hero-badge{padding:9px 13px;border:1px solid rgba(255,255,255,.22);background:rgba(0,0,0,.2);border-radius:999px;font-size:.82rem}
+    .scroll-cue{position:absolute;right:4%;bottom:30px;z-index:3;writing-mode:vertical-rl;text-transform:uppercase;letter-spacing:.18em;font-size:.68rem;opacity:.8}
+    section{padding:100px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:46px}
+    .section-head > div:first-child{max-width:760px}
+    .section-head h2{margin-top:14px}
+    .intro{background:var(--cream)}
+    .intro-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center}
+    .intro-copy h2{margin:14px 0 22px}
+    .intro-copy p{color:var(--muted);margin-bottom:18px}
+    .signature{display:flex;gap:18px;align-items:center;margin-top:28px}
+    .signature-mark{width:54px;height:54px;border-radius:50%;background:var(--forest);color:#fff;display:grid;place-items:center}
+    .signature strong{display:block}
+    .signature small{color:var(--muted)}
+    .photo-stack{position:relative;min-height:520px}
+    .photo-stack img{position:absolute;border-radius:24px;box-shadow:var(--shadow);object-fit:cover}
+    .photo-main{width:78%;height:470px;right:0;top:0}
+    .photo-small{width:48%;height:250px;left:0;bottom:0;border:10px solid var(--cream)}
+    .floating-card{position:absolute;right:7%;bottom:8%;background:#fff;border-radius:18px;padding:16px 18px;box-shadow:var(--shadow);max-width:210px}
+    .floating-card b{font-family:"Playfair Display",serif;font-size:1.5rem}
+    .floating-card span{display:block;color:var(--muted);font-size:.82rem}
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .service{padding:28px;background:#fff;border:1px solid #ecebe4;border-radius:20px;transition:.25s}
+    .service:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+    .icon{width:48px;height:48px;border-radius:15px;background:#f5e8ca;color:var(--amber);display:grid;place-items:center;font-size:1.2rem;margin-bottom:20px}
+    .service h3{font-size:1.3rem;margin-bottom:8px}
+    .service p{font-size:.92rem;color:var(--muted)}
+    .destinations{background:#f8f6f0}
+    .destination-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .destination{min-height:470px;border-radius:24px;overflow:hidden;position:relative;color:#fff;background:#222}
+    .destination img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.5s}
+    .destination:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 28%,rgba(0,0,0,.85))}
+    .destination:hover img{transform:scale(1.06)}
+    .destination-content{position:absolute;z-index:2;left:26px;right:26px;bottom:24px}
+    .destination-content .tag{display:inline-block;background:rgba(255,255,255,.16);backdrop-filter:blur(10px);padding:6px 10px;border-radius:999px;font-size:.72rem;margin-bottom:12px}
+    .destination h3{font-size:2rem;margin-bottom:8px}
+    .destination p{font-size:.88rem;color:#e7e7e0}
+    .destination-link{display:inline-flex;margin-top:14px;gap:8px;color:#f1bd59;font-weight:800}
+    .experiences{background:var(--forest);color:#fff}
+    .experiences .eyebrow{color:#f0bd57}
+    .experiences .section-head p{color:#cfd3c7}
+    .experience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .experience{background:#fff;color:var(--ink);border-radius:22px;overflow:hidden}
+    .experience img{height:230px;width:100%;object-fit:cover}
+    .experience-body{padding:22px}
+    .experience-body h3{font-size:1.45rem;margin-bottom:8px}
+    .experience-body p{font-size:.9rem;color:var(--muted)}
+    .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
+    .meta span{font-size:.72rem;background:#f2eee3;padding:5px 8px;border-radius:999px}
+    .itineraries{background:var(--cream)}
+    .itinerary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .trip{background:#fff;border:1px solid #e8e3d8;border-radius:22px;overflow:hidden}
+    .trip img{height:220px;width:100%;object-fit:cover}
+    .trip-body{padding:24px}
+    .trip .days{color:var(--amber);font-size:.75rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
+    .trip h3{font-size:1.55rem;margin:8px 0}
+    .trip p{font-size:.9rem;color:var(--muted)}
+    .trip ul{list-style:none;margin:15px 0}
+    .trip li{font-size:.84rem;padding:6px 0;border-bottom:1px dashed #ddd}
+    .trip li i{color:var(--gold);width:18px}
+    .trip a{font-weight:800;color:var(--amber)}
+    .split{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}
+    .checklist{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+    .check{padding:15px;border:1px solid #e7e4dc;border-radius:15px;background:#fff}
+    .check i{color:var(--amber);margin-right:8px}
+    .dark-panel{background:var(--forest);color:#fff;border-radius:28px;padding:50px;position:relative;overflow:hidden}
+    .dark-panel:after{content:"";position:absolute;width:300px;height:300px;border:1px solid rgba(255,255,255,.12);border-radius:50%;right:-100px;top:-120px}
+    .dark-panel p{color:#cdd3c4}
+    .dark-panel h2{margin:14px 0 20px}
+    .dark-panel .btn{margin-top:22px}
+    .gallery{background:#fff}
+    .gallery-grid{columns:4 250px;column-gap:14px}
+    .gallery-item{break-inside:avoid;margin:0 0 14px;position:relative;border-radius:16px;overflow:hidden}
+    .gallery-item img{width:100%;height:auto;transition:.4s}
+    .gallery-item:hover img{transform:scale(1.035)}
+    .gallery-item figcaption{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.55);color:#fff;padding:6px 9px;border-radius:999px;font-size:.68rem;backdrop-filter:blur(8px)}
+    .guide{background:#f8f6f0}
+    .guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .guide-card{background:#fff;padding:28px;border-radius:20px;border:1px solid #e9e6dd}
+    .guide-card h3{font-size:1.35rem;margin:10px 0}
+    .guide-card p,.guide-card li{color:var(--muted);font-size:.9rem}
+    .guide-card ul{padding-left:18px}
+    .reviews{background:var(--cream)}
+    .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .review{background:#fff;padding:28px;border-radius:20px}
+    .stars{color:var(--gold);letter-spacing:2px}
+    .review p{font-family:"Playfair Display",serif;font-size:1.15rem;margin:15px 0}
+    .review small{color:var(--muted)}
+    .faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}
+    .faq details{border-bottom:1px solid #ddd;padding:18px 0}
+    .faq summary{cursor:pointer;font-weight:800;list-style:none;display:flex;justify-content:space-between;gap:20px}
+    .faq summary:after{content:"+";color:var(--amber)}
+    .faq details[open] summary:after{content:"−"}
+    .faq details p{padding:12px 20px 0 0;color:var(--muted);font-size:.92rem}
+    .booking{background:var(--forest);color:#fff}
+    .booking-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:start}
+    .booking-copy p{color:#cdd3c4;margin:20px 0}
+    .contact-list{display:grid;gap:12px;margin-top:25px}
+    .contact-list a{display:flex;gap:12px;align-items:center;color:#fff}
+    .contact-list i{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;color:#f0bd57}
+    form{background:#fff;color:var(--ink);padding:30px;border-radius:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .field{display:grid;gap:7px}
+    .field.full{grid-column:1/-1}
+    label{font-size:.78rem;font-weight:800}
+    input,textarea,select{width:100%;border:1px solid #ddd8cc;border-radius:12px;padding:12px 13px;outline:none;background:#fcfbf8}
+    input:focus,textarea:focus,select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(215,154,49,.12)}
+    textarea{min-height:125px;resize:vertical}
+    form .btn{grid-column:1/-1}
+    footer{background:#10150a;color:#d9ddcf;padding:70px 0 25px}
+    .footer-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr 1fr;gap:40px}
+    .footer-brand img{width:170px;filter:brightness(0) invert(1);opacity:.95}
+    footer h4{color:#fff;font-size:1.15rem;margin-bottom:16px}
+    footer p,footer li{font-size:.86rem;color:#aeb5a3}
+    footer ul{list-style:none;display:grid;gap:8px}
+    footer a:hover{color:#f0bd57}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:40px;padding-top:20px;display:flex;justify-content:space-between;gap:20px;font-size:.78rem;color:#8e9684}
+    .whatsapp{position:fixed;right:22px;bottom:22px;width:58px;height:58px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;font-size:1.5rem;z-index:1200;box-shadow:0 15px 30px rgba(0,0,0,.2)}
+    .backtop{position:fixed;right:22px;bottom:92px;width:42px;height:42px;border-radius:50%;background:#fff;color:var(--forest);display:grid;place-items:center;z-index:1199;box-shadow:0 8px 25px rgba(0,0,0,.15);opacity:0;pointer-events:none;transition:.2s}
+    .backtop.show{opacity:1;pointer-events:auto}
+    .notice{font-size:.75rem;color:#818878;margin-top:14px}
+    @media(max-width:1000px){
+      .navlinks{gap:15px}
+      .cards{grid-template-columns:1fr 1fr}
+      .destination-grid,.experience-grid,.itinerary-grid,.guide-grid,.review-grid{grid-template-columns:1fr 1fr}
+      .intro-grid,.split,.booking-grid,.faq-grid{grid-template-columns:1fr}
+      .photo-stack{min-height:580px}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:760px){
+      .topbar .container{justify-content:center}
+      .topbar .toplinks:first-child{display:none}
+      nav{height:72px}
+      .brand img{width:120px}
+      .mobile-toggle{display:block}
+      .navlinks{position:absolute;top:72px;left:0;right:0;background:#fff;padding:18px 4%;display:none;flex-direction:column;align-items:flex-start;border-bottom:1px solid #eee}
+      .navlinks.open{display:flex}
+      .hero{min-height:calc(100vh - 104px)}
+      .hero-content{padding:90px 0 70px}
+      .hero h1{font-size:3.25rem}
+      section{padding:72px 0}
+      .section-head{display:block}
+      .section-head .btn{margin-top:20px}
+      .cards,.destination-grid,.experience-grid,.itinerary-grid,.guide-grid,.review-grid{grid-template-columns:1fr}
+      .photo-stack{min-height:500px}
+      .photo-main{height:420px;width:82%}
+      .photo-small{height:210px;width:55%}
+      .dark-panel{padding:32px}
+      .checklist{grid-template-columns:1fr}
+      form{grid-template-columns:1fr;padding:22px}
+      .field.full,form .btn{grid-column:auto}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-bottom{display:block}
+      .footer-bottom span{display:block;margin-top:7px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div class="toplinks"><span><i class="fa-solid fa-location-dot"></i> Kenya</span><span>Private • Small Group • Tailor-Made</span></div>
+      <div class="toplinks"><a href="tel:+254700752267"><i class="fa-solid fa-phone"></i> +254 700 752 267</a><a href="mailto:poshoadventures@gmail.com">poshoadventures@gmail.com</a></div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="#home" aria-label="Posho Adventures home"><img src="assets/posho-adventures-logo.png" alt="Posho Adventures logo"></a>
+        <button class="mobile-toggle" aria-label="Open menu" onclick="document.querySelector('.navlinks').classList.toggle('open')"><i class="fa-solid fa-bars"></i></button>
+        <div class="navlinks">
+          <a href="#about">About</a>
+          <a href="#destinations">Destinations</a>
+          <a href="#experiences">Experiences</a>
+          <a href="#itineraries">Safaris</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#guide">Travel Guide</a>
+          <a class="btn btn-primary" href="#booking">Plan My Trip <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <span class="eyebrow" style="color:#f5ca70">Kenya safari & travel</span>
+          <h1>Go beyond the <span>ordinary.</span></h1>
+          <p>Welcome to Posho Adventures — journeys through Kenya's wild landscapes, extraordinary wildlife, living cultures and beautiful coastlines, thoughtfully shaped around the way you want to travel.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#booking">Start planning <i class="fa-solid fa-arrow-right"></i></a>
+            <a class="btn btn-outline" href="#destinations">Explore Kenya</a>
+          </div>
+          <div class="hero-badges">
+            <span class="hero-badge"><i class="fa-solid fa-binoculars"></i> Wildlife safaris</span>
+            <span class="hero-badge"><i class="fa-solid fa-mountain-sun"></i> Adventure</span>
+            <span class="hero-badge"><i class="fa-solid fa-people-group"></i> Culture</span>
+            <span class="hero-badge"><i class="fa-solid fa-umbrella-beach"></i> Coast escapes</span>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-cue">Scroll to explore ↓</div>
+    </section>
+
+    <section class="intro" id="about">
+      <div class="container intro-grid">
+        <div class="intro-copy">
+          <span class="eyebrow">The Posho way</span>
+          <h2>Kenya is not a checklist. It is a feeling.</h2>
+          <p>Posho Adventures is a Kenya-based tour brand built around the idea that the best journeys leave you with more than photographs. They give you stories, encounters, landscapes and moments you remember long after the road home.</p>
+          <p>From the open grasslands of the Maasai Mara to the elephant country of Amboseli, the great wilderness of Tsavo and the warm Indian Ocean coast, this website is designed to help travelers discover a Kenya itinerary that feels personal.</p>
+          <div class="signature">
+            <div class="signature-mark"><i class="fa-solid fa-compass"></i></div>
+            <div><strong>Explore. Discover. Experience.</strong><small>Travel with curiosity. Return with stories.</small></div>
+          </div>
+        </div>
+        <div class="photo-stack">
+          <img class="photo-main" src="https://images.unsplash.com/photo-1704868152748-e5a520db48e5?auto=format&fit=crop&q=85&w=1400" alt="Elephant in the Maasai Mara landscape">
+          <img class="photo-small" src="https://images.unsplash.com/photo-1685301072752-a200d194aacb?auto=format&fit=crop&q=85&w=900" alt="Giraffes in Kenya">
+          <div class="floating-card"><b>Wild at heart.</b><span>Safari • Culture • Coast • Adventure</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow">What we do</span><h2>Travel, shaped around you.</h2><p class="lead">Choose a complete safari, a short escape or a custom journey. Mix wildlife, culture, nature, photography and relaxation into one seamless Kenya adventure.</p></div>
+        </div>
+        <div class="cards">
+          <article class="service"><div class="icon"><i class="fa-solid fa-paw"></i></div><h3>Wildlife Safaris</h3><p>Game drives, wildlife viewing, photography-focused trips and classic Big Five experiences across Kenya's iconic parks and reserves.</p></article>
+          <article class="service"><div class="icon"><i class="fa-solid fa-route"></i></div><h3>Tailor-Made Tours</h3><p>Tell us your dates, interests, pace and budget. Build a private itinerary rather than fitting your trip into a fixed template.</p></article>
+          <article class="service"><div class="icon"><i class="fa-solid fa-person-hiking"></i></div><h3>Adventure Travel</h3><p>Walking, hiking, scenic drives, nature experiences and active escapes for travelers who want more than a vehicle-and-lodge routine.</p></article>
+          <article class="service"><div class="icon"><i class="fa-solid fa-masks-theater"></i></div><h3>Culture & Community</h3><p>Make space for meaningful cultural encounters, local stories, crafts, food and community experiences when planning your route.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="destinations" id="destinations">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow">Where will you go?</span><h2>Iconic Kenya. Many ways to experience it.</h2><p class="lead">Start with a destination or combine several regions into one road adventure.</p></div>
+          <a class="btn btn-dark" href="#booking">Build an itinerary</a>
+        </div>
+        <div class="destination-grid">
+          <article class="destination">
+            <img src="https://images.unsplash.com/photo-1685301084071-ff20d5f64690?auto=format&fit=crop&q=85&w=1200" alt="Leopard in a tree in Maasai Mara">
+            <div class="destination-content"><span class="tag">South Rift</span><h3>Maasai Mara</h3><p>Open savannahs, exceptional wildlife viewing, dramatic skies and unforgettable safari moments.</p><a class="destination-link" href="#booking">Plan a Mara safari <i class="fa-solid fa-arrow-right"></i></a></div>
+          </article>
+          <article class="destination">
+            <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?auto=format&fit=crop&q=85&w=1200" alt="Mount Kilimanjaro from Amboseli">
+            <div class="destination-content"><span class="tag">Southern Kenya</span><h3>Amboseli</h3><p>Wide horizons, iconic elephants and spectacular views toward Mount Kilimanjaro.</p><a class="destination-link" href="#booking">Explore Amboseli <i class="fa-solid fa-arrow-right"></i></a></div>
+          </article>
+          <article class="destination">
+            <img src="https://images.unsplash.com/photo-1487739388261-b69fbc00587e?auto=format&fit=crop&q=85&w=1200" alt="Elephant in Tsavo">
+            <div class="destination-content"><span class="tag">Eastern Kenya</span><h3>Tsavo</h3><p>Vast wilderness, red-earth landscapes and a sense of scale that makes every game drive an expedition.</p><a class="destination-link" href="#booking">Discover Tsavo <i class="fa-solid fa-arrow-right"></i></a></div>
+          </article>
+          <article class="destination">
+            <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&q=85&w=1200" alt="African landscape">
+            <div class="destination-content"><span class="tag">Northern Kenya</span><h3>Samburu</h3><p>Rugged landscapes, striking wildlife and a distinct cultural character in Kenya's north.</p><a class="destination-link" href="#booking">Go north <i class="fa-solid fa-arrow-right"></i></a></div>
+          </article>
+          <article class="destination">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=85&w=1200" alt="Tropical ocean beach">
+            <div class="destination-content"><span class="tag">Indian Ocean</span><h3>Diani & Coast</h3><p>White sands, warm water, Swahili culture and a slower rhythm after the safari dust.</p><a class="destination-link" href="#booking">Add the coast <i class="fa-solid fa-arrow-right"></i></a></div>
+          </article>
+          <article class="destination">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=85&w=1200" alt="Mountain landscape">
+            <div class="destination-content"><span class="tag">Central Kenya</span><h3>Mount Kenya</h3><p>Highland scenery, forest, mountain air and active escapes for travelers who want a different pace.</p><a class="destination-link" href="#booking">Add adventure <i class="fa-solid fa-arrow-right"></i></a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="experiences" id="experiences">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow">Signature experiences</span><h2>Moments worth crossing a continent for.</h2><p class="lead">Use these experiences as building blocks for a private journey or ask us to create something completely different.</p></div>
+        </div>
+        <div class="experience-grid">
+          <article class="experience"><img src="https://images.unsplash.com/photo-1706398760569-4717df6fb7fe?auto=format&fit=crop&q=85&w=1000" alt="Elephants in Amboseli"><div class="experience-body"><h3>Classic Game Drive</h3><p>Set out early, follow tracks, watch the light change and let the day unfold around the wildlife.</p><div class="meta"><span>Wildlife</span><span>Photography</span><span>Private option</span></div></div></article>
+          <article class="experience"><img src="https://images.unsplash.com/photo-1685301072752-a200d194aacb?auto=format&fit=crop&q=85&w=1000" alt="Giraffes on safari"><div class="experience-body"><h3>Golden-Hour Wildlife</h3><p>Slow down for sunrise and sunset when the landscape becomes a photographer's dream.</p><div class="meta"><span>Sunrise</span><span>Sunset</span><span>Photography</span></div></div></article>
+          <article class="experience"><img src="https://images.unsplash.com/photo-1685301084071-ff20d5f64690?auto=format&fit=crop&q=85&w=1000" alt="Leopard safari"><div class="experience-body"><h3>Big Cat Tracking</h3><p>Spend time in predator country and learn to read the signs that reveal what happened before you arrived.</p><div class="meta"><span>Predators</span><span>Wildlife</span><span>Field skills</span></div></div></article>
+          <article class="experience"><img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?auto=format&fit=crop&q=85&w=1000" alt="Kilimanjaro landscape"><div class="experience-body"><h3>Scenic Kenya</h3><p>Build a route around mountains, escarpments, forests, lakes and wide-open landscapes.</p><div class="meta"><span>Scenery</span><span>Road trip</span><span>Nature</span></div></div></article>
+          <article class="experience"><img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&q=85&w=1000" alt="African savannah"><div class="experience-body"><h3>Safari Photography</h3><p>Plan around light, landscapes and time in the field for travelers who want a photography-first experience.</p><div class="meta"><span>Photo</span><span>Private</span><span>Slow safari</span></div></div></article>
+          <article class="experience"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=85&w=1000" alt="Indian Ocean beach"><div class="experience-body"><h3>Safari + Coast</h3><p>Finish the adventure beside the Indian Ocean with a few days to rest, swim and enjoy the coast.</p><div class="meta"><span>Beach</span><span>Relaxation</span><span>Couples</span></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="itineraries" id="itineraries">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow">Sample journeys</span><h2>Start with a route. Then make it yours.</h2><p class="lead">These are planning examples, not fixed packages. Tell Posho Adventures what you want to see and how you like to travel.</p></div>
+        </div>
+        <div class="itinerary-grid">
+          <article class="trip"><img src="https://images.unsplash.com/photo-1704868152748-e5a520db48e5?auto=format&fit=crop&q=85&w=1200" alt="Maasai Mara elephant safari"><div class="trip-body"><span class="days">4 days • Mara</span><h3>Mara Wildlife Escape</h3><p>A focused safari for first-time visitors who want time in the Mara without rushing.</p><ul><li><i class="fa-solid fa-check"></i> Nairobi → Maasai Mara</li><li><i class="fa-solid fa-check"></i> Full-day game drive option</li><li><i class="fa-solid fa-check"></i> Sunrise & sunset viewing</li><li><i class="fa-solid fa-check"></i> Flexible accommodation</li></ul><a href="#booking">Request this journey →</a></div></article>
+          <article class="trip"><img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?auto=format&fit=crop&q=85&w=1200" alt="Amboseli and Kilimanjaro"><div class="trip-body"><span class="days">5 days • South Kenya</span><h3>Elephants & Kilimanjaro</h3><p>Combine Amboseli's landscapes with another wildlife stop for a varied southern Kenya trip.</p><ul><li><i class="fa-solid fa-check"></i> Amboseli National Park</li><li><i class="fa-solid fa-check"></i> Kilimanjaro viewpoints</li><li><i class="fa-solid fa-check"></i> Wildlife photography</li><li><i class="fa-solid fa-check"></i> Optional cultural visit</li></ul><a href="#booking">Request this journey →</a></div></article>
+          <article class="trip"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=85&w=1200" alt="Beach holiday in Kenya"><div class="trip-body"><span class="days">8 days • Safari + Coast</span><h3>Wild Kenya to the Ocean</h3><p>A classic contrast: wildlife and open country first, then a slower Indian Ocean finish.</p><ul><li><i class="fa-solid fa-check"></i> Safari circuit</li><li><i class="fa-solid fa-check"></i> Scenic transfer or flight planning</li><li><i class="fa-solid fa-check"></i> Beach time</li><li><i class="fa-solid fa-check"></i> Couples & family friendly</li></ul><a href="#booking">Request this journey →</a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container split">
+        <div class="dark-panel">
+          <span class="eyebrow">Your trip, your rhythm</span>
+          <h2>Don't see your dream itinerary?</h2>
+          <p>Good. That's exactly what custom travel is for. Share your travel dates, group size, preferred destinations, interests and approximate budget — and start a conversation about your route.</p>
+          <a class="btn btn-primary" href="#booking">Create a custom safari <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div>
+          <span class="eyebrow">Plan with confidence</span>
+          <h2>What we can build into your trip.</h2>
+          <div class="checklist">
+            <div class="check"><i class="fa-solid fa-car"></i><b>Safari transport</b></div>
+            <div class="check"><i class="fa-solid fa-bed"></i><b>Lodging options</b></div>
+            <div class="check"><i class="fa-solid fa-binoculars"></i><b>Game drives</b></div>
+            <div class="check"><i class="fa-solid fa-camera"></i><b>Photo-focused days</b></div>
+            <div class="check"><i class="fa-solid fa-people-group"></i><b>Culture & community</b></div>
+            <div class="check"><i class="fa-solid fa-umbrella-beach"></i><b>Coast extension</b></div>
+            <div class="check"><i class="fa-solid fa-person-hiking"></i><b>Active adventures</b></div>
+            <div class="check"><i class="fa-solid fa-plane"></i><b>Flight planning</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow">Kenya in pictures</span><h2>A visual taste of the journey.</h2><p class="lead">A starter gallery for the website. Replace these demonstration images with your own Posho Adventures photography as your image library grows.</p></div>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1704868152748-e5a520db48e5?auto=format&fit=crop&q=82&w=1000" alt="Elephant in Maasai Mara"><figcaption>Maasai Mara</figcaption></figure>
+          <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1685301084071-ff20d5f64690?auto=format&fit=crop&q=82&w=1000" alt="Leopard in tree"><figcaption>Predator country</figcaption></figure>
+          <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1685301072752-a200d194aacb?auto=format&fit=crop&q=82&w=1000" alt="Giraffes in Kenya"><figcaption>Giraffes</figcaption></figure>
+          <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?auto=format&fit=crop&q=82&w=1000" alt="Kilimanjaro"><figcaption>Amboseli</figcaption></figure>
+          <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1487739388261-b69fbc00587e?auto=format&fit=crop&q=82&w=1000" alt="Elephant in Tsavo"><figcaption>Tsavo</figcaption></figure>
+          <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&q=82&w=1000" alt="African savannah"><figcaption>Savannah</figcaption></figure>
+          <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=82&w=1000" alt="Kenyan coast"><figcaption>Indian Ocean</figcaption></figure>
+          <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=82&w=1000" alt="Mountain landscape"><figcaption>Highlands</figcaption></figure>
+          <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&q=82&w=1000" alt="African landscape"><figcaption>Wild landscapes</figcaption></figure>
+          <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1534177616072-ef7dc120449d?auto=format&fit=crop&q=82&w=1000" alt="Mountain scenery"><figcaption>Adventure</figcaption></figure>
+          <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&q=82&w=1000" alt="Zebra wildlife"><figcaption>Wildlife</figcaption></figure>
+          <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?auto=format&fit=crop&q=82&w=1000" alt="African wildlife"><figcaption>On safari</figcaption></figure>
+        </div>
+        <p class="notice">Demo photography is sourced from Unsplash. For a production launch, replace it with images you own or have permission to use, and retain appropriate photographer attribution where required.</p>
+      </div>
+    </section>
+
+    <section class="guide" id="guide">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow">Travel guide</span><h2>Useful before you pack your bags.</h2><p class="lead">A simple planning framework for building a comfortable, memorable Kenya journey.</p></div>
+        </div>
+        <div class="guide-grid">
+          <article class="guide-card"><div class="icon"><i class="fa-solid fa-calendar-days"></i></div><h3>When to travel</h3><p>Kenya works across different seasons, and the best timing depends on your priorities. Wildlife, landscapes, photography, coast time and budget can all change the ideal route.</p></article>
+          <article class="guide-card"><div class="icon"><i class="fa-solid fa-suitcase-rolling"></i></div><h3>What to pack</h3><ul><li>Light layers for changing temperatures</li><li>Comfortable closed shoes</li><li>Sun protection and reusable water bottle</li><li>Binoculars and camera equipment</li><li>Small day bag for game drives</li></ul></article>
+          <article class="guide-card"><div class="icon"><i class="fa-solid fa-route"></i></div><h3>How to plan</h3><p>Choose your must-see places first, then decide how many nights you can give each. Avoid packing too many parks into too few days — the journey is part of the experience.</p></article>
+          <article class="guide-card"><div class="icon"><i class="fa-solid fa-camera"></i></div><h3>Photography</h3><p>For photographers, we can structure days around light and time in the field. Bring spare batteries, memory cards, a dust-safe bag and the longest lens you are comfortable carrying.</p></article>
+          <article class="guide-card"><div class="icon"><i class="fa-solid fa-leaf"></i></div><h3>Responsible travel</h3><p>Respect wildlife space, follow park rules, support local communities and choose experiences that value conservation and the people who live alongside Kenya's landscapes.</p></article>
+          <article class="guide-card"><div class="icon"><i class="fa-solid fa-wallet"></i></div><h3>Budget planning</h3><p>Your final cost depends on transport, accommodation level, park fees, group size, trip length and activities. Ask for a tailored quote rather than assuming one package fits every traveler.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow">The experience</span><h2>Designed to feel personal.</h2><p class="lead">Placeholder testimonials for the design. Replace these with verified guest reviews once Posho Adventures has collected them.</p></div>
+        </div>
+        <div class="review-grid">
+          <article class="review"><div class="stars">★★★★★</div><p>“The perfect balance of wildlife, scenery and time to simply enjoy being there.”</p><small>— Guest review placeholder</small></article>
+          <article class="review"><div class="stars">★★★★★</div><p>“A safari should never feel rushed. The itinerary gave us space to take it all in.”</p><small>— Guest review placeholder</small></article>
+          <article class="review"><div class="stars">★★★★★</div><p>“From the savannah to the coast, Kenya felt like several worlds in one journey.”</p><small>— Guest review placeholder</small></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="container faq-grid">
+        <div>
+          <span class="eyebrow">Questions</span>
+          <h2>Before we set off.</h2>
+          <p class="lead" style="margin-top:20px">Have a question that is not listed? Contact Posho Adventures directly and describe what you are planning.</p>
+          <a class="btn btn-dark" href="#booking" style="margin-top:24px">Ask a question</a>
+        </div>
+        <div>
+          <details open><summary>Can you create a private safari?</summary><p>Yes. The site is designed around tailor-made travel. Share your dates, group size, destinations, interests and preferred accommodation style to begin planning.</p></details>
+          <details><summary>Can I combine safari and the beach?</summary><p>Absolutely. A safari-and-coast itinerary can combine a wildlife circuit with time around Kenya's Indian Ocean coast.</p></details>
+          <details><summary>Do you plan family trips?</summary><p>Yes. Tell us the ages of travelers, preferred pace and accommodation requirements so the route can be shaped around your group.</p></details>
+          <details><summary>Can you plan photography-focused trips?</summary><p>Yes. Let us know what you photograph and the kind of experience you want. The itinerary can prioritize time in the field, light and wildlife viewing.</p></details>
+          <details><summary>How do I request a quote?</summary><p>Use the enquiry form below, call +254 700 752 267, or email poshoadventures@gmail.com. The more detail you provide, the easier it is to shape the first proposal.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking" id="booking">
+      <div class="container booking-grid">
+        <div class="booking-copy">
+          <span class="eyebrow" style="color:#f0bd57">Let's plan</span>
+          <h2>Tell us what you want to discover.</h2>
+          <p>Send a few details and turn the idea in your head into a real Kenya journey. The form opens your email client with the trip details already prepared.</p>
+          <div class="contact-list">
+            <a href="tel:+254700752267"><i class="fa-solid fa-phone"></i><span>+254 700 752 267</span></a>
+            <a href="mailto:poshoadventures@gmail.com"><i class="fa-solid fa-envelope"></i><span>poshoadventures@gmail.com</span></a>
+            <a href="https://wa.me/254700752267" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i><span>Chat on WhatsApp</span></a>
+          </div>
+        </div>
+
+        <form id="tripForm">
+          <div class="field"><label for="name">Your name</label><input id="name" required placeholder="Jane Doe"></div>
+          <div class="field"><label for="email">Email</label><input id="email" type="email" required placeholder="you@example.com"></div>
+          <div class="field"><label for="phone">Phone / WhatsApp</label><input id="phone" placeholder="+..."></div>
+          <div class="field"><label for="travelers">Travelers</label><select id="travelers"><option>1–2</option><option>3–5</option><option>6–10</option><option>11+</option></select></div>
+          <div class="field"><label for="start">Preferred start date</label><input id="start" type="date"></div>
+          <div class="field"><label for="style">Travel style</label><select id="style"><option>Classic safari</option><option>Luxury safari</option><option>Mid-range</option><option>Budget-conscious</option><option>Family trip</option><option>Photography trip</option><option>Safari + coast</option><option>Adventure / hiking</option></select></div>
+          <div class="field full"><label for="dest">Places you want to visit</label><input id="dest" placeholder="e.g. Maasai Mara, Amboseli, Diani..."></div>
+          <div class="field full"><label for="message">Tell us about your dream trip</label><textarea id="message" placeholder="Number of nights, interests, accommodation preferences, special occasions, approximate budget, or anything else that matters..."></textarea></div>
+          <button class="btn btn-primary" type="submit">Prepare my enquiry <i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><img src="assets/posho-adventures-logo.png" alt="Posho Adventures"><p style="margin-top:18px;max-width:320px">Kenya journeys built around wildlife, landscapes, culture and the freedom to explore at your own pace.</p></div>
+        <div><h4>Explore</h4><ul><li><a href="#destinations">Destinations</a></li><li><a href="#experiences">Experiences</a></li><li><a href="#itineraries">Sample safaris</a></li><li><a href="#gallery">Gallery</a></li></ul></div>
+        <div><h4>Plan</h4><ul><li><a href="#guide">Travel guide</a></li><li><a href="#faq">FAQs</a></li><li><a href="#booking">Request a quote</a></li><li><a href="mailto:poshoadventures@gmail.com">Email us</a></li></ul></div>
+        <div><h4>Contact</h4><ul><li><a href="tel:+254700752267">+254 700 752 267</a></li><li><a href="mailto:poshoadventures@gmail.com">poshoadventures@gmail.com</a></li><li><a href="https://wa.me/254700752267" target="_blank" rel="noopener">WhatsApp</a></li><li>Kenya</li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year"></span> Posho Adventures. All rights reserved.</span><span>Explore. Discover. Experience.</span></div>
+    </div>
+  </footer>
+
+  <a class="whatsapp" href="https://wa.me/254700752267" target="_blank" rel="noopener" aria-label="WhatsApp Posho Adventures"><i class="fa-brands fa-whatsapp"></i></a>
+  <a class="backtop" href="#home" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const backtop = document.querySelector(".backtop");
+    window.addEventListener("scroll", () => {
+      backtop.classList.toggle("show", window.scrollY > 600);
+    });
+
+    document.querySelectorAll(".navlinks a").forEach(a => {
+      a.addEventListener("click", () => document.querySelector(".navlinks").classList.remove("open"));
+    });
+
+    document.getElementById("tripForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const travelers = document.getElementById("travelers").value;
+      const start = document.getElementById("start").value || "Flexible";
+      const style = document.getElementById("style").value;
+      const dest = document.getElementById("dest").value.trim() || "Open to suggestions";
+      const message = document.getElementById("message").value.trim() || "No additional notes.";
+      const subject = encodeURIComponent("New Posho Adventures Trip Enquiry — " + name);
+      const body = encodeURIComponent(
+        "Hello Posho Adventures,\n\n" +
+        "I would like to plan a Kenya trip.\n\n" +
+        "Name: " + name + "\n" +
+        "Email: " + email + "\n" +
+        "Phone / WhatsApp: " + (phone || "Not provided") + "\n" +
+        "Travelers: " + travelers + "\n" +
+        "Preferred start: " + start + "\n" +
+        "Travel style: " + style + "\n" +
+        "Destinations: " + dest + "\n\n" +
+        "Trip details:\n" + message + "\n\n" +
+        "Thank you."
+      );
+      window.location.href = "mailto:poshoadventures@gmail.com?subject=" + subject + "&body=" + body;
+    });
+  </script>
+</body>
+</html>
