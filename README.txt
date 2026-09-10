@@ -19,7 +19,3 @@ Highlights:
 - Enquiry form that prepares an email to poshoadventures@gmail.com
 - Mobile responsive layout
 
-IMPORTANT:
-Some gallery/destination photos are loaded from Unsplash URLs. For a fully self-contained offline website, download and replace those URLs with Posho Adventures-owned/licensed photographs before production launch.
-
-Displayed prices are illustrative “from” rates and should be confirmed with the operator before publishing as final prices.
